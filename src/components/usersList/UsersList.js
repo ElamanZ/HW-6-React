@@ -19,7 +19,7 @@ function UsersList({usersList}) {
         <>
 
             <h2>Phone: {usersInfo}</h2>
-            <p>_______________________________</p>
+            <p>____________________________________________________________________</p>
             <ul>{
                 usersList.map(user =>
                     <li key={user.id}>
