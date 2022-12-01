@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 
 function UsersList({usersList}) {
-    const [usersInfo, setUsersInfo] = useState()
+    const [usersInfo, setUsersInfo] = useState({})
 
 
     const getOneUserInfo = (event) => {
@@ -9,24 +9,28 @@ function UsersList({usersList}) {
         fetch(`https://jsonplaceholder.typicode.com/users/${id}`)
             .then(response => response.json())
             .then(data => {
-                setUsersInfo(data.phone)
+                setUsersInfo({
+                    phone: data.phone,
+                    email: data.email,
+                    website: data.website,
+                })
             })
-
     }
-    console.log(`usersInfo ${usersInfo}`)
+
+
     return (
 
         <>
-
-            <h2>Phone: {usersInfo}</h2>
             <p>____________________________________________________________________</p>
+            <h3>phone: {usersInfo.phone}</h3>
+            <h3>email: {usersInfo.email}</h3>
+            <h3>website: {usersInfo.website}</h3>
             <ul>{
                 usersList.map(user =>
                     <li key={user.id}>
                         <p>______________________________</p>
                         <p>name: {user.name}</p>
-                        <p>email: {user.email}</p>
-                        <p>city: {user.address.city}</p>
+                        <p>username: {user.username}</p>
                         <button
                             data-id={user.id}
                             onClick={getOneUserInfo}>
